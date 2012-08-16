@@ -1,84 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_width="fill_parent"
-	 android:layout_height="fill_parent" android:background="#ffffff">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" >
+
     <RelativeLayout
         android:id="@+id/header"
-        android:layout_width="wrap_content"	android:layout_height="wrap_content"
-        android:background="#777777">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#777777" >
+
         <ImageButton
-	        android:id="@+id/back_lc"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/backto" />
-    	<EditText
-	        android:id="@+id/search"
-	        android:layout_width="120dp"
-	        android:layout_height="wrap_content"
-	        android:layout_toLeftOf="@+id/search_bottom"
-	        android:hint="Search.."
-	        android:textSize="12dp" />
+            android:id="@+id/back_lc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/backto" />
 
-    	<ImageButton
-	        android:id="@+id/search_bottom"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentRight="true"
-	        android:src="@drawable/find" />
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/search_bottom"
+            android:hint="Search.."
+            android:textSize="12dp" />
 
-    	<TextView
-	        android:id="@+id/home"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignBaseline="@+id/search"
-	        android:layout_alignBottom="@+id/search"
-	        android:layout_marginLeft="18dp"
-	        android:layout_toRightOf="@+id/back_lc"
-	        android:text="Home"
-	        android:textColor="#333300"
-	        android:textSize="15dp" />
+        <ImageButton
+            android:id="@+id/search_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/find" />
 
-    	<TextView
-	        android:id="@+id/help"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignBaseline="@+id/home"
-	        android:layout_alignBottom="@+id/home"
-	        android:layout_toRightOf="@+id/home"
-	        android:padding="7dp"
-	        android:text="Help"
-	        android:textColor="#333300"
-	        android:textSize="15dp" />
+        <TextView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/search"
+            android:layout_alignBottom="@+id/search"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/back_lc"
+            android:text="Home"
+            android:textColor="#333300"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/home"
+            android:layout_alignBottom="@+id/home"
+            android:layout_toRightOf="@+id/home"
+            android:padding="7dp"
+            android:text="Help"
+            android:textColor="#333300"
+            android:textSize="15dp" />
     </RelativeLayout>
-    <TextView android:id="@+id/Tittle_catalog" android:layout_width="wrap_content"
-		  android:layout_height="wrap_content" android:textColor="#000000"
-		  android:textSize="24dip" android:layout_margin="5dip" android:text="Product Catalog"
-		  android:layout_below="@+id/header"/>
-    
-    <ListView android:layout_height="wrap_content"
-		  android:layout_weight="1" android:id="@+id/ListViewCatalog"
-		  android:layout_width="fill_parent" android:background="#ffffff"
-		  android:clickable="true" android:cacheColorHint="#ffffff"
-		  android:layout_below="@+id/Tittle_catalog">
-	</ListView>
-	<Button
-	     android:id="@+id/Show_cart"
-	     android:paddingTop="15dp"	android:layout_below="@+id/ListViewCatalog"
-	     android:layout_width="50dp"	android:layout_height="wrap_content"
-	     android:layout_centerInParent="true"	android:background="@drawable/cart"
-	    />
-	<ImageButton
-	     android:id="@+id/previous"		android:layout_below="@+id/ListViewCatalog"
-	     android:layout_toLeftOf="@+id/Show_cart"	
-	     android:layout_width="48dp"	android:layout_height="wrap_content"
-	     android:layout_alignTop="@+id/Show_cart"	android:layout_alignBottom="@+id/Show_cart"
-	     android:src="@drawable/left_grey"
-	      />
-	<ImageButton
-	     android:id="@+id/next"		android:layout_below="@+id/ListViewCatalog"
-	     android:layout_toRightOf="@+id/Show_cart"	
-	     android:layout_width="48dp"	android:layout_height="wrap_content"
-	     android:layout_alignTop="@+id/Show_cart"	android:layout_alignBottom="@+id/Show_cart"
-	     android:src="@drawable/right_grey"	
-	      />
+
+    <TextView
+        android:id="@+id/Tittle_catalog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_margin="5dip"
+        android:text="Product Catalog"
+        android:textColor="#000000"
+        android:textSize="24dip" />
+
+    <ListView
+        android:id="@+id/ListViewCatalog"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Tittle_catalog"
+        android:layout_weight="1"
+        android:background="#ffffff"
+        android:cacheColorHint="#ffffff"
+        android:clickable="true" >
+    </ListView>
+
+    <Button
+        android:id="@+id/Show_cart"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ListViewCatalog"
+        android:layout_centerInParent="true"
+        android:background="@drawable/cart"
+        android:paddingTop="15dp" />
+
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Show_cart"
+        android:layout_alignTop="@+id/Show_cart"
+        android:layout_below="@+id/ListViewCatalog"
+        android:layout_toLeftOf="@+id/Show_cart"
+        android:src="@drawable/left_grey" />
+
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Show_cart"
+        android:layout_alignTop="@+id/Show_cart"
+        android:layout_below="@+id/ListViewCatalog"
+        android:layout_toRightOf="@+id/Show_cart"
+        android:src="@drawable/right_grey" />
+
 </RelativeLayout>

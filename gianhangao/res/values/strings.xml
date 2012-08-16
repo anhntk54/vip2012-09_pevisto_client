@@ -4,9 +4,14 @@
     <string name="hello">Hello World, GianhangaoActivity!</string>
     <string name="app_name">Gianhangao</string>
     <string name="promt">gender</string>
-	<string-array name="Gender_select">
+    <string name="login">Đăng nhập</string>
+    <string name="user">Tên đăng nhập</string>
+    <string name="pass">Mật khẩu</string>
+
+    <string-array name="Gender_select">
         <item>female</item>
         <item>male</item>
         <item>other</item>
     </string-array>
+
 </resources>

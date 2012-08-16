@@ -1,135 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:fillViewport="true"
-  android:background="#fff">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bgregister"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <!-- Full Name Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Account" />
+
+        <EditText
+            android:id="@+id/reg_acc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="1dip"
+            android:hint="Account"
+            android:singleLine="true" />
+        <!-- Password Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Password" />
+
+        <EditText
+            android:id="@+id/reg_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dip"
+            android:hint="password"
+            android:password="true"
+            android:singleLine="true" />
+        <!-- Repassword Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="repassword" />
+
+        <EditText
+            android:id="@+id/re_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dip"
+            android:hint="repassword"
+            android:password="true"
+            android:singleLine="true" />
+        <!-- Full name Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Full name" />
+
+        <EditText
+            android:id="@+id/Full_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dip"
+            android:hint="Full name"
+            android:singleLine="true" />
+        <!-- Email Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Email" />
+
+        <EditText
+            android:id="@+id/reg_email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="1dip"
+            android:hint="reg email"
+            android:singleLine="true" />
+        <!-- Re Email Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="ReEmail" />
+
+        <EditText
+            android:id="@+id/re_email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="re email"
+            android:inputType="textEmailAddress" >
+
+            <requestFocus />
+        </EditText>
+        <!-- Gender radio spinner -->
+
         <LinearLayout
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          android:orientation="vertical"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:padding="10dip">
-          <!-- Full Name Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Account"/>
-          <EditText android:id="@+id/reg_acc"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="Account"
-                android:layout_marginTop="1dip"
-                android:singleLine="true"
-                android:layout_marginBottom="5dip"/>
-          <!-- Password Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Password"/>
-          <EditText android:id="@+id/reg_password"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="password"
-                android:password="true"
-                android:singleLine="true"
-                android:layout_marginTop="1dip"/>
-          <!-- Repassword Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="repassword"/>
-          <EditText android:id="@+id/re_password"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="repassword"
-                android:password="true"
-                android:singleLine="true"
-                android:layout_marginTop="1dip"/>
-          <!-- Full name Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Full name"/>
-          <EditText android:id="@+id/Full_name"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="Full name"
-                android:singleLine="true"
-                android:layout_marginTop="1dip"/>
-          <!--  Email Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Email"/>
-          <EditText android:id="@+id/reg_email"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:hint="reg email"
-                android:layout_marginTop="1dip"
-                android:singleLine="true"
-                android:layout_marginBottom="5dip"/>
-		  <!-- Re Email Label -->
-          <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="ReEmail"/>
+            android:id="@+id/layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-          <EditText
-              android:id="@+id/re_email"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:ems="10"
-              android:inputType="textEmailAddress"
-              android:hint="re email" >
-
-              <requestFocus />
-          </EditText>
-          <!-- Gender radio spinner -->
-          <LinearLayout
-              android:id="@+id/layout1"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content">
-              <TextView
-	              android:id="@+id/gender_tittle"
-	              android:layout_width="60dp"
-	              android:layout_height="wrap_content"
-	              android:textColor="#372c24"
-	              android:text="Gender "
-              />
-          	  <Spinner
-	              android:id="@+id/gender"
-	              android:layout_width="160dp"
-	              android:layout_height="wrap_content"
-	              android:prompt="@string/promt"
-	              android:entries="@array/Gender_select"
-              />
-              </LinearLayout>
-          <!-- Register Button -->
-		  <EditText
-		      android:id="@+id/setDate"
-		      android:layout_width="120dp"
-		      android:layout_height="wrap_content"
-		      android:hint="Birthday"/>
-
-          <Button
-              android:id="@+id/btnRegister"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="10dip"
-              android:text="Register New Account" />
-
-          <!-- Link to Login Screen -->
-          <TextView android:id="@+id/link_to_login"
-                android:layout_width="fill_parent"
+            <TextView
+                android:id="@+id/gender_tittle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dip"
-                android:layout_marginBottom="40dip"
-                android:text="Already has account! Login here"
-                android:gravity="center"
-                android:textSize="20dip"
-                android:textColor="#025f7c"/>
- 
+                android:text="Gender "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Gender_select"
+                android:prompt="@string/promt" />
         </LinearLayout>
+        <!-- Register Button -->
+
+        <EditText
+            android:id="@+id/setDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birthday" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Register New Account" />
+
+        <!-- Link to Login Screen -->
+
+        <TextView
+            android:id="@+id/link_to_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dip"
+            android:layout_marginTop="40dip"
+            android:gravity="center"
+            android:text="Already has account! Login here"
+            android:textSize="20dip" />
+    </LinearLayout>
+
 </ScrollView>
