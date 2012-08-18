@@ -56,6 +56,7 @@ public class register extends Activity {
 				// TODO Auto-generated method stub
 				startActivity(new Intent(getApplicationContext(),
 						GianhangaoActivity.class));
+				finish();
 			}
 		});
 		editDate.setOnClickListener(new OnClickListener() {
