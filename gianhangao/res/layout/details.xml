@@ -2,122 +2,140 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
     <TextView
-        android:id="@+id/title_item"
+        android:id="@+id/title_sanpham"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFCC66"
-        android:textSize="22dp"
-        android:text="Sản phẩm 1"
         android:background="#0000BB"
         android:gravity="center"
-        />
-    <ImageView
-        android:id="@+id/icon_detail"
-        android:layout_width="fill_parent"
-        android:layout_height="160dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/ok"
-        />
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#CCFFFF"
-        android:padding="15dp">
-        
-        <TextView
-            android:id="@+id/title_gia"
+        android:text="Sản phẩm 1"
+        android:textColor="#FFCC66"
+        android:textSize="22dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom" >
+
+        <ImageView
+            android:id="@+id/icon_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giá : "
-            android:textSize="16dp"
-            android:textStyle="bold"
+            android:src="@drawable/detial" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="bottom|right"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/addcast"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/cart" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price:  $"
             android:textColor="#001100"
-            />
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/gia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#FF3333"
             android:text="$1000000000"
-            android:layout_toRightOf="@+id/title_gia"
-            />
+            android:textColor="#FF3333"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="State :"
+            android:textColor="#001100"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/title_tinhtrang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tình trạng : "
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#001100"
-            android:layout_below="@+id/title_gia"
-            />
-        <TextView
-            android:id="@+id/tinhtrang"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#FF3333"
-            android:layout_toRightOf="@+id/title_tinhtrang"
-            />
-        <TextView
-            android:id="@+id/title_mieuta"
+            android:hint="1000"
+            android:text="100"
+            android:textColor="#FF3333" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:text="Describe :"
+        android:textColor="#001100"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mieuta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Chú ý: Thông số kỹ thuật chỉ mang tính tham khảo, bạn hãy liên lạc trực tiếp với gian hàng để có được thông tin chính xác về sản phẩm. Nếu như sản phẩm sai với thông số kỹ thuật đăng trên Vatgia.com, xin bạn vui lòng bấm vào đây để thông báo cho Vatgia. Chân thành cảm ơn bạn!f"
+        android:textColor="#FF3333"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/canle"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:background="#CCFF00" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom|center" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/quantity_pro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Miêu tả : "
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#001100"
-            android:layout_below="@+id/title_tinhtrang"
-            />
-        <TextView
-            android:id="@+id/mieuta"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="#FF3333"
-            android:text="Chú ý: Thông số kỹ thuật chỉ mang tính tham khảo, bạn hãy liên lạc trực tiếp với gian hàng để có được thông tin chính xác về sản phẩm. Nếu như sản phẩm sai với thông số kỹ thuật đăng trên Vatgia.com, xin bạn vui lòng bấm vào đây để thông báo cho Vatgia. Chân thành cảm ơn bạn!f"
-            android:layout_below="@+id/title_mieuta"
-            />
+            android:hint="Quantity" />
 
         <Button
-            android:id="@+id/addcast"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_above="@+id/mieuta"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/cart"/>
-		<TextView
-		    android:id="@+id/canle"
-		    android:layout_width="1dp"
-		    android:layout_height="1dp"
-		    android:layout_alignBottom="@+id/mieuta"
-		    android:background="#CCFF00"
-		    android:layout_centerInParent="true"
-		    />
-        <Button
-            android:id="@+id/Trolai"
+            android:id="@+id/add_to_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/mieuta"
-            android:layout_alignRight="@+id/canle"
-            android:text="Gian Hàng" 
-            android:layout_marginRight="30dp"/>
+            android:text="Add cart" />
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/themgio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/mieuta"
-            android:layout_alignLeft="@+id/canle"
-            android:text="Thêm Giỏ" 
-            android:layout_marginLeft="30dp"/>
-
-    </RelativeLayout>
 </LinearLayout>

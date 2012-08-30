@@ -16,7 +16,7 @@
     </TextView>
 
     <ListView
-        android:id="@+id/ListViewCatalog"
+        android:id="@+id/list_pro_cart"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -27,6 +27,24 @@
     </ListView>
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order : " />
+        <TextView
+            android:id="@+id/price_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/LinearLayout01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,17 +52,24 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/ButtonRemoveFromCart"
+            android:id="@+id/romove_from_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remove from Cart" >
+            android:text="Remove" >
         </Button>
 
         <Button
-            android:id="@+id/Button02"
+            android:id="@+id/check_out_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proceed to Checkout" >
+            android:text="Checkout" >
+        </Button>
+
+        <Button
+            android:id="@+id/buy_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buy Goods" >
         </Button>
     </LinearLayout>
 

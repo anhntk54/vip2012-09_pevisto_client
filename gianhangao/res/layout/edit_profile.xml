@@ -21,7 +21,7 @@
             android:text="Name" />
 
         <EditText
-            android:id="@+id/reg_acc"
+            android:id="@+id/edit_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
@@ -37,7 +37,7 @@
             android:text="Password" />
 
         <EditText
-            android:id="@+id/reg_password"
+            android:id="@+id/edit_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dip"
@@ -52,7 +52,7 @@
             android:text="repassword" />
 
         <EditText
-            android:id="@+id/re_password"
+            android:id="@+id/reedit_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dip"
@@ -60,19 +60,6 @@
             android:password="true"
             android:singleLine="true" />
         <!-- Full name Label -->
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Full name" />
-
-        <EditText
-            android:id="@+id/Full_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dip"
-            android:hint="Full name"
-            android:singleLine="true" />
         <!-- Email Label -->
 
         <TextView
@@ -81,7 +68,7 @@
             android:text="Email" />
 
         <EditText
-            android:id="@+id/reg_email"
+            android:id="@+id/edit_email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
@@ -90,6 +77,35 @@
             android:singleLine="true" />
         <!-- Re Email Label -->
         <!-- Gender radio spinner -->
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Address" />
+
+        <EditText
+            android:id="@+id/edit_address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" android:inputType="text" android:hint="address">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Phone number" />
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" android:inputType="phone" android:hint="Phone number"/>
 
         <LinearLayout
             android:id="@+id/layout1"
@@ -104,19 +120,26 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <Spinner
-                android:id="@+id/gender"
-                android:layout_width="fill_parent"
+                android:id="@+id/edit_gender"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:entries="@array/Gender_select"
                 android:prompt="@string/promt" />
         </LinearLayout>
         <!-- Register Button -->
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Birth Day" />
 
         <EditText
-            android:id="@+id/setDate"
-            android:layout_width="match_parent"
+            android:id="@+id/edit_set_date"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Birthday" />
+            android:hint="year-month-day" />
 
         <!-- Link to Login Screen -->
 
@@ -124,12 +147,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center" >
-
+
             <Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Done" />
+                android:text="Save" />
 
             <Button
                 android:id="@+id/cancel"

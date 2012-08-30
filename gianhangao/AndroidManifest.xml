@@ -5,9 +5,9 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="7" />
-
+	<uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo_app"
         android:label="@string/app_name" >
         <activity
             android:name=".GianhangaoActivity"
@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".register" android:label="@string/app_name"
+        <activity android:name=".RegisterActivity" android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
         <activity android:name=".CatalogActive"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
@@ -27,8 +27,9 @@
         <activity android:name=".ShoppingCartActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
         <activity android:name=".CompanyActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>        
-        
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:name=".EditProfileActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
     </application>
 
 </manifest>

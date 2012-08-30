@@ -34,7 +34,7 @@ public class AdapterCompany extends BaseAdapter {
  
 			// set value into textview
 			TextView textView = (TextView) gridView
-					.findViewById(R.id.tv_company);
+					.findViewById(R.id.name_company);
 			textView.setText(mobileValues[position]);
  
 			// set image based on selected text

@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff" >
+    android:background="@drawable/bgproducts"
+    android:orientation="vertical" >
 
-    <RelativeLayout
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#777777" >
+        android:background="#777777"
+        android:gravity="center_vertical" >
 
         <ImageButton
             android:id="@+id/back_lc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/backto" />
-
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/search_bottom"
-            android:hint="Search.."
-            android:textSize="12dp" />
-
-        <ImageButton
-            android:id="@+id/search_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/find" />
 
         <TextView
             android:id="@+id/home"
@@ -44,7 +30,7 @@
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/help"
+            android:id="@+id/help_list_pro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/home"
@@ -54,56 +40,65 @@
             android:text="Help"
             android:textColor="#333300"
             android:textSize="15dp" />
-    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/Tittle_catalog"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Search.."
+            android:textSize="12dp" >
+
+            <requestFocus />
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/search_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/find" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header"
-        android:layout_margin="5dip"
-        android:text="Product Catalog"
-        android:textColor="#000000"
-        android:textSize="24dip" />
+        android:background="#111111"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/Tittle_catalog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:text="Product Catalog"
+            android:textColor="#AAAAAA"
+            android:textSize="24dip" />
+
+        <ImageButton
+            android:id="@+id/previous"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/left_grey" />
+
+        <Button
+            android:id="@+id/Show_cart"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cart"
+            android:paddingTop="15dp" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/right_grey" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/ListViewCatalog"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Tittle_catalog"
-        android:layout_weight="1"
-        android:background="#ffffff"
-        android:cacheColorHint="#ffffff"
         android:clickable="true" >
     </ListView>
 
-    <Button
-        android:id="@+id/Show_cart"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ListViewCatalog"
-        android:layout_centerInParent="true"
-        android:background="@drawable/cart"
-        android:paddingTop="15dp" />
-
-    <ImageButton
-        android:id="@+id/previous"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Show_cart"
-        android:layout_alignTop="@+id/Show_cart"
-        android:layout_below="@+id/ListViewCatalog"
-        android:layout_toLeftOf="@+id/Show_cart"
-        android:src="@drawable/left_grey" />
-
-    <ImageButton
-        android:id="@+id/next"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Show_cart"
-        android:layout_alignTop="@+id/Show_cart"
-        android:layout_below="@+id/ListViewCatalog"
-        android:layout_toRightOf="@+id/Show_cart"
-        android:src="@drawable/right_grey" />
-
-</RelativeLayout>
+</LinearLayout>
