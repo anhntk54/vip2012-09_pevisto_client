@@ -12,6 +12,7 @@ public class Product implements Serializable {
 	public String name			= "";
 	public int price 			= 0;
 	public int quantity			= 0;
+	public int ID = 0;
 
 	public Drawable productImage;
 
@@ -50,5 +51,11 @@ public class Product implements Serializable {
  	public void setEventQuantity(int quantity)
  	{
  		this.quantity=quantity;
+ 	}
+ 	public void setID(int id){
+ 		ID = id;
+ 	}
+ 	public int getID(){
+ 		return ID;
  	}
 }

@@ -1,19 +1,18 @@
 package thinh.gianhangao.gianhangao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -29,15 +28,29 @@ public class GianhangaoActivity extends Activity implements OnClickListener {
 	String User_key, Pass_key;
 	Control_id control;
 	JSONParser jsonParser = new JSONParser();
+	ProgressDialog dialog;
 	// Hashmap for ListView
-    
 	String URL = "http://gianhangao-1.herokuapp.com/sessions.json";
+	Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			dialog.dismiss();
+			int isLogin = (Integer) msg.obj;
+			Log.d("Login", msg.toString());
+			if(isLogin == 1){
+				Toast.makeText(getApplicationContext(), "Login successful...", 1).show();
+				startActivity(new Intent(getApplicationContext(), CompanyActivity.class));
+				finish();
+			} else if(isLogin == 0) Toast.makeText(getApplicationContext(), "Login fault...", 1).show();
+			else Toast.makeText(getApplicationContext(), "Error connect to serrver...", 1).show();
+		}
+	}; // handler
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
+
 		findViews();
 		setClickListeners();
 
@@ -64,32 +77,34 @@ public class GianhangaoActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.btn_login:
-			v.performHapticFeedback(HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING); // Haptic
-																						// feedback
-																						// is
-																						// cool
-			// Once the text boxes have been filled in we can post the data to
-			// the Rails server
-			JSONObject js = postEvents();
-			try {
-				if (js.getInt("status") == 1) {
-					control = new Control_id(getApplicationContext());
-					control.saveID(js.getString("user_id"));
-					Toast.makeText(getApplicationContext(), "login is sucess",
-							Toast.LENGTH_LONG).show();
-					Log.e("ID", js.getString("user_id"));
-					startActivity(new Intent(getApplicationContext(),
-							CompanyActivity.class));
-					finish();
-				} else
-					Toast.makeText(getApplicationContext(), "login is fault",
-							Toast.LENGTH_LONG).show();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Log.e("json", js.toString());
-
+			v.performHapticFeedback(HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+			dialog = ProgressDialog.show(this, "", "Please wait for few seconds...", true);
+			Thread login = new Thread(new Runnable() {
+				public void run() {
+					try {
+						List<NameValuePair> params = new ArrayList<NameValuePair>();
+						params.add(new BasicNameValuePair("session[user]", username.getText().toString()));
+						params.add(new BasicNameValuePair("session[password]", password.getText().toString()));
+						// getting JSON Object
+						JSONObject js = jsonParser.getJSONFromUrl(URL, params);
+						//JSONObject js = postEvents();
+						int isLogin;
+						if (js == null ){
+							isLogin = -1;
+						} else if (js.getInt("status") == 1) {
+							control = new Control_id(getApplicationContext());
+							control.saveID(js.getString("user_id"));
+							Log.d("LOGIN", js.toString());
+							isLogin = 1;
+						} else
+							isLogin = 0;
+						Message msg = handler.obtainMessage(1, isLogin);
+						handler.sendMessage(msg);
+					} catch (Throwable t) {
+					}
+				}// run
+			});// background
+			login.start();
 			break;
 		case R.id.register:
 			try {
@@ -101,21 +116,5 @@ public class GianhangaoActivity extends Activity implements OnClickListener {
 						Toast.LENGTH_LONG).show();
 			}
 		}
-	}
-
-	private JSONObject postEvents()
-	{
-		 //fÃ¼r momentane testzwecke
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("session[user]", username.getText().toString()));
-		params.add(new BasicNameValuePair("session[password]",password.getText().toString()));
-		
-		// getting JSON Object
-		
-		JSONObject json = jsonParser.getJSONFromUrl(URL, params);
-		if(json != null)
-			Log.i("json not null", json.toString());
-		// return json
-		return json;
 	}
 }

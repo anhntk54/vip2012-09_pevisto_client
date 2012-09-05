@@ -14,14 +14,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * @author Andrew Gertig
@@ -29,9 +34,14 @@ import android.widget.TextView;
 public class CatalogActive extends Activity {
 	
 	private ListView listViewCatalog;
+	private Button switch_to_cart;
+	private ImageButton event_search;
+	private EditText searching;
+	private Context context;
 	private ArrayList<DataProduct> eventsArrayList = null;
 	private AdapterListProduct m_adapter;
 	String URL = "http://gianhangao-1.herokuapp.com/api/allproduct/";
+	String url = "http://gianhangao-1.herokuapp.com/api/search/1.json?s=";
 	
 	
 	/** Called when the activity is first created. */
@@ -40,32 +50,62 @@ public class CatalogActive extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.catalog);
 		listViewCatalog = (ListView) findViewById(R.id.ListViewCatalog);
-		
-		
+		context = getBaseContext();
+		Intent intent = getIntent();
+		Bundle company_id = intent.getExtras();
+		URL = URL + company_id.getInt("ID") + ".json";
 		
 		eventsArrayList = new ArrayList<DataProduct>();
-		eventsArrayList = parseXMLString("");
-
+		eventsArrayList = parseXMLString(URL);
+		searching_event();
 		this.m_adapter = new AdapterListProduct(this, R.layout.row, eventsArrayList);
 		listViewCatalog.setAdapter(this.m_adapter);
 
 	}
-
+	public void searching_event() {
+	  switch_to_cart = (Button) findViewById(R.id.Show_cart);
+	  searching = (EditText) findViewById(R.id.search);
+	  switch_to_cart.setOnClickListener(new OnClickListener() {
+	   
+		   @Override
+		   public void onClick(View v) {
+			   // TODO Auto-generated method stub
+			   startActivity(new Intent(getApplicationContext(), ShoppingCartActivity.class));
+		   }
+	  });
+	  event_search = (ImageButton) findViewById(R.id.search_bottom);
+	  event_search.setOnClickListener(new OnClickListener() {
+	   
+   @Override
+   public void onClick(View v) {
+		    // TODO Auto-generated method stub
+		if(searching.getText().toString().length()!=0)
+		{
+			 String murl = url + searching.getText().toString();
+		     eventsArrayList = parseXMLString(murl);
+		     m_adapter.clear();
+		     m_adapter = new AdapterListProduct(context, R.layout.row, eventsArrayList);
+		     Log.d("search", m_adapter.toString());
+		     Log.d("Search", eventsArrayList.toString());
+		     Log.d("Search", murl);
+		     listViewCatalog.setAdapter(m_adapter);
+		}
+		else
+			Toast.makeText(getApplicationContext(), "please fill area search", Toast.LENGTH_LONG).show();
+	   }});
+	 }
 	private ArrayList<DataProduct> parseXMLString(String xmlString) {
 		JSONArray array = null;
 		JSONParser json = new JSONParser();
 
 		try {
-			Intent intent = getIntent();
-			Bundle company_id = intent.getExtras();
-			URL = URL + company_id.getInt("ID") + ".json";
 			
-			array = new JSONArray(json.readGetJson(URL));
+			array = new JSONArray(json.readGetJson(xmlString));
 			for (int i = 0; i < array.length(); i++) {
 				DataProduct DataProduct = new DataProduct();
 				JSONObject jb = array.getJSONObject(i);
 				DataProduct.setEventDescribe(jb.getString("describe"));
-				DataProduct.setEventProduct(jb.getString("product"));
+				DataProduct.setEventProduct(jb.getString("name"));
 				DataProduct.setEventID(jb.getInt("id"));
 				DataProduct.setEventPrice(jb.getInt("price"));
 				DataProduct.setEventInventory(jb.getInt("inventory"));
@@ -98,7 +138,7 @@ public class CatalogActive extends Activity {
 	private class AdapterListProduct extends ArrayAdapter<DataProduct> {
 
 		private ArrayList<DataProduct> items;
-		private  LayoutInflater inflater = null;
+		private LayoutInflater inflater = null;
 		private Image ivLoader = null;
 		private Intent intent;
 		

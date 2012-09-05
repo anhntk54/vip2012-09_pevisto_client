@@ -8,10 +8,11 @@ import org.json.JSONObject;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,13 +20,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.content.DialogInterface;
 
 public class ShoppingCartActivity extends Activity {
 
 	private ListView listViewCatalog;
 	private ArrayList<Product> eventsArrayList = null;
 	private AdapterListProduct m_adapter;
-	String URL = "http://gianhangao-1.herokuapp.com/orders.json";
+	private Context context;
+	JSONParser json = new JSONParser();
+	String URL = "http://gianhangao-1.herokuapp.com/api/userorder/";
+	String URLRemove = "http://gianhangao-1.herokuapp.com/api/deleteorder/";
 
 	/** Called when the activity is first created. */
 	@Override
@@ -33,12 +38,15 @@ public class ShoppingCartActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shoppingcart);
 		listViewCatalog = (ListView) findViewById(R.id.list_pro_cart);
-
+		
+		Control_id control = new Control_id(getApplicationContext());
+		String ID = control.getID();
+		URL = URL + ID + ".json";
+		context = getBaseContext();
 		eventsArrayList = new ArrayList<Product>();
-		eventsArrayList = parseXMLString("");
+		eventsArrayList = parseXMLString(URL);
 
-		this.m_adapter = new AdapterListProduct(this,
-				R.layout.item_product_cart, eventsArrayList);
+		this.m_adapter = new AdapterListProduct(this, R.layout.item_product_cart, eventsArrayList);
 		listViewCatalog.setAdapter(this.m_adapter);
 
 	}
@@ -52,12 +60,13 @@ public class ShoppingCartActivity extends Activity {
 
 		try {
 
-			array = new JSONArray(json.readGetJson(URL));
+			array = new JSONArray(json.readGetJson(xmlString));
 			for (int i = 0; i < array.length(); i++) {
 				Product Product = new Product();
 				JSONObject jb = array.getJSONObject(i);
 				Product.setEventProId(jb.getInt("product_id"));
 				Product.setEventQuantity(jb.getInt("quantily"));
+				Product.setID(jb.getInt("id"));
 				eventsArrayList.add(Product);
 			}
 		} catch (JSONException e) {
@@ -102,6 +111,7 @@ public class ShoppingCartActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+						showAlert(o);
 					}
 				});
 				TextView name = (TextView) v
@@ -113,10 +123,37 @@ public class ShoppingCartActivity extends Activity {
 					name.setText("ID: " + o.getEventProId());
 				}
 				if (quantily != null) {
-					quantily.setText("Quantily : " + o.getEventQuantity());
+					quantily.setText("Quantily: " + o.getEventQuantity());
 				}
-			}
+			} 
 			return v;
 		}
+	}
+	private void showAlert(final Product o) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.msg_del)
+				.setTitle(R.string.title)
+				.setCancelable(false)
+				.setPositiveButton("Delete",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								String urlDel = URLRemove + o.getID();
+								String js = json.readGetJson(urlDel);
+								Log.d("card", js);
+								
+								m_adapter.clear();
+								eventsArrayList = parseXMLString(URL);
+								m_adapter = new AdapterListProduct(context, R.layout.item_product_cart, eventsArrayList);
+								listViewCatalog.setAdapter(m_adapter);
+							}
+						})
+				.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								
+								dialog.cancel();
+							}
+						});
+		builder.show();
 	}
 }
