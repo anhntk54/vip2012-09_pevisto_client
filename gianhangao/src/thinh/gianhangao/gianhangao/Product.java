@@ -13,6 +13,7 @@ public class Product implements Serializable {
 	public int price 			= 0;
 	public int quantity			= 0;
 	public int ID = 0;
+	public String image				= "";
 
 	public Drawable productImage;
 
@@ -57,5 +58,11 @@ public class Product implements Serializable {
  	}
  	public int getID(){
  		return ID;
+ 	}
+ 	public void setIMG(String url){
+ 		image = url;
+ 	}
+ 	public String getIMG(){
+ 		return image;
  	}
 }
